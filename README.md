@@ -38,7 +38,7 @@ ________________________________________________________________________________
 🚀 Installation & Setup
 
 1 Clone the Repository:
-git clone https://github.com/your-username/churn-intelligence-v3.git
+git clone (https://github.com/yogesh12334/ai-driven-customer-retention-dashboard)
 cd churn-intelligence-v3
 
 2 Install Dependencies:
