@@ -1,0 +1,19 @@
+# Web Frameworks
+fastapi
+uvicorn
+streamlit
+
+# Data Processing & Analysis
+pandas
+numpy
+pyyaml
+
+# Machine Learning
+scikit-learn
+xgboost
+joblib
+shap
+
+# Visualization & Networking
+plotly
+requests

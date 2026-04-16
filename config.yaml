@@ -1,0 +1,229 @@
+# =============================================================================
+#  CHURN INTELLIGENCE SYSTEM — MASTER CONFIG
+#  Version: 3.0
+#  All pipeline components (training, API, dashboard) read from this file.
+#  Change values here — no code changes needed anywhere.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+#  PROJECT METADATA
+# -----------------------------------------------------------------------------
+project:
+  name: "Churn Intelligence System"
+  version: "3.0"
+  environment: "development"        # development | staging | production
+  description: "End-to-end ML pipeline for customer churn prediction"
+  owner: "Data Science Team"
+
+# -----------------------------------------------------------------------------
+#  DATABASE
+# -----------------------------------------------------------------------------
+database:
+  path: "database.db"
+  table_name: "customers"
+  pragma:
+    journal_mode: "WAL"             # Better concurrency
+    foreign_keys: true
+
+# -----------------------------------------------------------------------------
+#  DIRECTORY PATHS
+# -----------------------------------------------------------------------------
+paths:
+  models_dir:      "models"
+  logs_dir:        "logs"
+  predictions_dir: "predictions"
+  reports_dir:     "reports"
+  data_dir:        "data"
+
+# -----------------------------------------------------------------------------
+#  LOGGING
+# -----------------------------------------------------------------------------
+logging:
+  level: "INFO"                     # DEBUG | INFO | WARNING | ERROR | CRITICAL
+  format: "%(asctime)s | %(levelname)-8s | %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+  rotate_logs: true
+  max_log_files: 10                 # Keep last 10 log files, delete older ones
+
+# -----------------------------------------------------------------------------
+#  DATA PIPELINE
+# -----------------------------------------------------------------------------
+pipeline:
+  csv_path: "data/customers.csv"
+  high_cardinality_threshold: 50    # Columns with more unique values → frequency encoding
+  
+  validation:
+    required_columns:
+      - "CustomerID"
+      - "Churn"
+      - "MonthlyCharges"
+      - "Tenure"
+      - "ContractType"
+    churn_valid_values: [0, 1]
+    fail_on_error: true             # false = log warning and continue
+
+  smote:
+    enabled: true
+    random_state: 42
+
+  split:
+    test_size: 0.2
+    random_state: 42
+    stratify: true
+
+# -----------------------------------------------------------------------------
+#  FEATURE ENGINEERING
+# -----------------------------------------------------------------------------
+features:
+  # Raw columns sent to the API / used before engineering
+  input_cols:
+    - "Age"
+    - "Tenure"
+    - "MonthlyCharges"
+    - "UsageHours"
+    - "SupportTickets"
+    - "Location"
+    - "ContractType"
+    - "PaymentMethod"
+
+  # Columns derived during training and inference
+  engineered_cols:
+    - "LifetimeValue"
+    - "IsCriticalRisk"
+    - "ChargePerMonth"
+    - "TenureGroup"
+    - "HighSpender"
+
+  # Columns to drop before training (IDs, target, leakage)
+  drop_cols:
+    - "Churn"
+    - "CustomerID"
+
+  # Thresholds used in feature derivation
+  engineering_thresholds:
+    high_spender_quantile: 0.75     # MonthlyCharges above this → HighSpender = 1
+    critical_risk_charge: 100       # MonthlyCharges above this → IsCriticalRisk = 1
+
+  tenure_bins:
+    boundaries: [0, 12, 24, 48, 9999]
+    labels: [0, 1, 2, 3]
+
+# -----------------------------------------------------------------------------
+#  MODEL TRAINING
+# -----------------------------------------------------------------------------
+training:
+  random_state: 42
+  n_jobs: -1                        # Use all CPU cores
+
+  cross_validation:
+    n_splits: 5
+    shuffle: true
+
+  hyperparameter_search:
+    n_iter: 10                      # Increase for better tuning, decrease for speed
+    scoring: "f1"
+
+  models:
+    RandomForest:
+      enabled: true
+      param_grid:
+        n_estimators: [100, 200, 300]
+        max_depth: [null, 10, 20, 30]
+        min_samples_split: [2, 5, 10]
+        min_samples_leaf: [1, 2, 4]
+        class_weight: ["balanced", null]
+
+    XGBoost:
+      enabled: true
+      param_grid:
+        n_estimators: [100, 200, 300]
+        max_depth: [3, 5, 7]
+        learning_rate: [0.01, 0.05, 0.1, 0.2]
+        subsample: [0.7, 0.8, 1.0]
+        colsample_bytree: [0.7, 0.8, 1.0]
+        scale_pos_weight: [1, 2, 5]
+
+  # Model selection metric — best model wins
+  selection_metric: "auc_roc"       # auc_roc | f1_score | accuracy
+
+  shap:
+    enabled: true
+    sample_size: 2000               # Rows sampled for SHAP (300k dataset pe full SHAP slow)
+
+# -----------------------------------------------------------------------------
+#  RISK THRESHOLDS  (used by API, dashboard, and batch scoring)
+# -----------------------------------------------------------------------------
+thresholds:
+  high_risk: 0.6
+  medium_risk: 0.3
+
+  alerts:
+    churn_rate_pct: 30.0            # Pipeline alert if churn exceeds this %
+    revenue_loss_inr: 100000        # Pipeline alert if 6-month loss exceeds this
+
+  confidence:
+    high: 0.75                      # Probability > 0.75 or < 0.25 → High confidence
+    medium: 0.60                    # Probability > 0.60 or < 0.40 → Medium confidence
+
+# -----------------------------------------------------------------------------
+#  BATCH SCORING
+# -----------------------------------------------------------------------------
+batch:
+  max_rows: 500                     # API max batch size
+  output_risk_labels:
+    high:   [0.6, 1.0]
+    medium: [0.3, 0.6]
+    low:    [0.0, 0.3]
+
+# -----------------------------------------------------------------------------
+#  API SERVER
+# -----------------------------------------------------------------------------
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true                      # Set false in production
+  timeout: 60
+  cors_origins: ["*"]               # Restrict in production: ["https://yourdomain.com"]
+  title: "Churn Prediction AI API"
+  version: "3.0"
+
+# -----------------------------------------------------------------------------
+#  DASHBOARD
+# -----------------------------------------------------------------------------
+dashboard:
+  page_title: "Churn Intelligence"
+  page_icon: "👑"
+  layout: "wide"
+  db_cache_ttl: 300                 # Seconds before DB cache refreshes
+  scatter_sample_size: 5000         # Max points in scatter plot (performance)
+  api_default_url: "http://localhost:8000"
+
+# -----------------------------------------------------------------------------
+#  RETENTION ROI DEFAULTS  (pre-fills the calculator sliders)
+# -----------------------------------------------------------------------------
+roi:
+  default_intervention_cost_inr: 500
+  churn_reduction_target_pct: 5.0   # Default target = current - 5%
+
+# -----------------------------------------------------------------------------
+#  ENVIRONMENT OVERRIDES
+#  In production, these values override the defaults above.
+#  Usage in code: config["environments"][config["project"]["environment"]]
+# -----------------------------------------------------------------------------
+environments:
+  development:
+    logging_level: "DEBUG"
+    api_reload: true
+    smote_enabled: true
+
+  staging:
+    logging_level: "INFO"
+    api_reload: false
+    smote_enabled: true
+
+  production:
+    logging_level: "WARNING"
+    api_reload: false
+    smote_enabled: true
+    cors_origins: ["*"]
+    db_cache_ttl: 60
