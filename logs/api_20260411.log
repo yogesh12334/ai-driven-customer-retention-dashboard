@@ -1,0 +1,15 @@
+2026-04-11 20:08:25,997 | INFO     | Artifacts loaded from slug: xgboost_20260411_112513
+2026-04-11 20:08:26,001 | INFO     | API startup complete — model ready
+2026-04-11 20:49:44,847 | INFO     | GET /docs \u2192 200 (32.27ms)
+2026-04-11 20:49:51,277 | INFO     | GET /openapi.json \u2192 200 (184.24ms)
+2026-04-11 20:51:38,876 | INFO     | GET /docs \u2192 200 (2.24ms)
+2026-04-11 20:51:39,596 | INFO     | GET /openapi.json \u2192 200 (11.37ms)
+2026-04-11 21:04:18,674 | INFO     | POST /predict/batch \u2192 200 (611.76ms)
+2026-04-11 22:54:26,894 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-11 22:54:26,898 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-11 22:58:58,454 | INFO     | GET /docs -> Status: 200 (2.57ms)
+2026-04-11 22:58:58,804 | INFO     | GET /openapi.json -> Status: 200 (80.46ms)
+2026-04-12 09:58:43,218 | INFO     | POST /predict/batch -> Status: 422 (287.64ms)
+2026-04-12 09:58:55,306 | INFO     | POST /predict/batch -> Status: 422 (29.81ms)
+2026-04-12 10:01:42,771 | INFO     | POST /predict/batch -> Status: 200 (464.9ms)
+2026-04-12 10:08:16,704 | INFO     | API Lifecycle: Service is shutting down.

@@ -1,0 +1,5 @@
+2026-04-16 09:37:22,448 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-16 09:37:22,454 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-16 09:43:25,729 | INFO     | API Lifecycle: Service is shutting down.
+2026-04-16 09:43:39,594 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-16 09:43:39,595 | INFO     | API Startup: Model artifacts are ready for inference.

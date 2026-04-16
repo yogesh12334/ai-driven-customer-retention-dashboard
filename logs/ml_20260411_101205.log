@@ -1,0 +1,11 @@
+2026-04-11 10:12:05 | INFO     | ============================================================
+2026-04-11 10:12:05 | INFO     | Advanced ML Churn Pipeline — START
+2026-04-11 10:12:05 | INFO     | Loading data from 'database.db' table 'customers'
+2026-04-11 10:12:09 | INFO     | Loaded 300,000 rows x 12 cols
+2026-04-11 10:12:10 | INFO     | Label encoded 'Location' — 63485 classes
+2026-04-11 10:12:10 | INFO     | Label encoded 'ContractType' — 2 classes
+2026-04-11 10:12:10 | INFO     | Label encoded 'PaymentMethod' — 3 classes
+2026-04-11 10:12:10 | INFO     | Feature engineering done — 15 total features
+2026-04-11 10:12:10 | INFO     | Features selected (13): ['Age', 'Tenure', 'MonthlyCharges', 'UsageHours', 'SupportTickets', 'Location', 'ContractType', 'PaymentMethod', 'LifetimeValue', 'IsCriticalRisk', 'ChargePerMonth', 'TenureGroup', 'HighSpender']
+2026-04-11 10:12:17 | INFO     | SMOTE applied — before: {0: 150024, 1: 149976}, after: {1: 150024, 0: 150024}
+2026-04-11 10:12:17 | INFO     | --- Training: RandomForest ---

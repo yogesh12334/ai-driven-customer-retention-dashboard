@@ -1,0 +1,77 @@
+{
+  "model_name": "XGBoost",
+  "version": "20260411_112513",
+  "features": [
+    "Age",
+    "Tenure",
+    "MonthlyCharges",
+    "UsageHours",
+    "SupportTickets",
+    "Location",
+    "ContractType",
+    "PaymentMethod",
+    "LifetimeValue",
+    "IsCriticalRisk",
+    "ChargePerMonth",
+    "TenureGroup",
+    "HighSpender"
+  ],
+  "metrics": {
+    "accuracy": 63.58,
+    "f1_score": 71.76,
+    "auc_roc": 77.51,
+    "cv_auc_mean": 77.31,
+    "cv_auc_std": 0.1,
+    "best_params": {
+      "subsample": 0.8,
+      "scale_pos_weight": 2,
+      "n_estimators": 300,
+      "max_depth": 5,
+      "learning_rate": 0.1,
+      "colsample_bytree": 0.8
+    }
+  },
+  "top_shap_features": [
+    [
+      "IsCriticalRisk",
+      1.7994412183761597
+    ],
+    [
+      "MonthlyCharges",
+      1.221824049949646
+    ],
+    [
+      "SupportTickets",
+      0.29075828194618225
+    ],
+    [
+      "UsageHours",
+      0.18579447269439697
+    ],
+    [
+      "ChargePerMonth",
+      0.16952119767665863
+    ],
+    [
+      "LifetimeValue",
+      0.05080319941043854
+    ],
+    [
+      "HighSpender",
+      0.04032682999968529
+    ],
+    [
+      "Tenure",
+      0.0383739173412323
+    ],
+    [
+      "Location",
+      0.029140938073396683
+    ],
+    [
+      "Age",
+      0.02480345591902733
+    ]
+  ],
+  "saved_at": "2026-04-11T11:25:14.972044"
+}

@@ -1,0 +1,11 @@
+12:40:28 | INFO     | >>> STARTING: Database Connection
+12:40:28 | INFO     | <<< FINISHED: Database Connection (0.02s)
+12:40:28 | INFO     | >>> STARTING: Extraction
+12:40:29 | INFO     | <<< FINISHED: Extraction (0.67s)
+12:40:29 | INFO     | >>> STARTING: Transformation & Intelligence
+12:40:29 | INFO     | <<< FINISHED: Transformation & Intelligence (0.42s)
+12:40:29 | INFO     | >>> STARTING: Loading to SQL
+12:40:32 | INFO     | <<< FINISHED: Loading to SQL (2.50s)
+12:40:32 | INFO     | >>> STARTING: Running Analytics Queries
+12:40:36 | INFO     | <<< FINISHED: Running Analytics Queries (4.48s)
+12:40:37 | WARNING  | CRITICAL: High Churn (49.99%). Est. 6-Month Loss: Rs. 1,593,361,375.01

@@ -1,0 +1,16 @@
+2026-04-09 19:50:45 | INFO     | ==================================================
+2026-04-09 19:50:45 | INFO     | Pipeline started
+2026-04-09 19:50:45 | INFO     | Database connected: database.db
+2026-04-09 19:50:46 | INFO     | Extracted 300,000 rows × 10 cols from data/customers.csv
+2026-04-09 19:50:46 | INFO     | Validation passed — schema and data quality OK
+2026-04-09 19:50:50 | INFO     | Transform complete — 0 duplicate rows removed; 300,000 rows remain; new cols: TotalEstimatedRevenue, RiskLabel
+2026-04-09 19:50:54 | INFO     | Loaded 300,000 rows into 'customers' table with indexes
+2026-04-09 19:50:54 | INFO     | Query 'churn_summary' — 1 row(s) returned
+2026-04-09 19:50:54 | INFO     | Query 'revenue_loss' — 1 row(s) returned
+2026-04-09 19:50:54 | INFO     | Query 'high_risk_customers' — 15 row(s) returned
+2026-04-09 19:50:54 | INFO     | Query 'segment_analysis' — 2 row(s) returned
+2026-04-09 19:50:55 | INFO     | Query 'risk_distribution' — 3 row(s) returned
+2026-04-09 19:50:55 | WARNING  | ALERT: Churn rate 49.99% > threshold 30.0%
+2026-04-09 19:50:55 | INFO     | Reports saved to 'reports/' — 5 CSVs + 1 JSON summary
+2026-04-09 19:50:55 | INFO     | Pipeline completed successfully in 9.71s — report: reports\summary_20260409_195055.json
+2026-04-09 19:50:55 | INFO     | Database connection closed

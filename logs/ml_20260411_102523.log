@@ -1,0 +1,20 @@
+2026-04-11 10:25:23 | INFO     | ============================================================
+2026-04-11 10:25:23 | INFO     | Advanced ML Churn Pipeline — START
+2026-04-11 10:25:23 | INFO     | Loading data from 'database.db' \u2192 table 'customers'
+2026-04-11 10:25:26 | INFO     | Loaded 300,000 rows x 12 cols
+2026-04-11 10:25:26 | INFO     | Frequency encoded 'Location' — 63,485 unique values \u2192 float
+2026-04-11 10:25:26 | INFO     | Label encoded 'ContractType' — 2 classes
+2026-04-11 10:25:27 | INFO     | Label encoded 'PaymentMethod' — 3 classes
+2026-04-11 10:25:27 | INFO     | Feature engineering done — 15 total features
+2026-04-11 10:25:27 | INFO     | Features (13): ['Age', 'Tenure', 'MonthlyCharges', 'UsageHours', 'SupportTickets', 'Location', 'ContractType', 'PaymentMethod', 'LifetimeValue', 'IsCriticalRisk', 'ChargePerMonth', 'TenureGroup', 'HighSpender']
+2026-04-11 10:25:31 | INFO     | SMOTE — before: {0: np.int64(150024), 1: np.int64(149976)}, after: {1: np.int64(150024), 0: np.int64(150024)}
+2026-04-11 10:25:32 | INFO     | \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+2026-04-11 10:25:32 | INFO     | Training: RandomForest
+2026-04-11 11:20:55 | INFO     | [RandomForest] Acc=68.16% | F1=66.94% | AUC=76.97% | CV AUC=76.9%±0.12%
+2026-04-11 11:20:55 | INFO     | \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+2026-04-11 11:20:55 | INFO     | Training: XGBoost
+2026-04-11 11:25:12 | INFO     | [XGBoost] Acc=63.58% | F1=71.76% | AUC=77.51% | CV AUC=77.31%±0.1%
+2026-04-11 11:25:13 | INFO     | [XGBoost] SHAP top 5: {'IsCriticalRisk': 1.7994, 'MonthlyCharges': 1.2218, 'SupportTickets': 0.2908, 'UsageHours': 0.1858, 'ChargePerMonth': 0.1695}
+2026-04-11 11:25:14 | INFO     | [XGBoost] Registry saved \u2192 models/xgboost_20260411_112513_*
+2026-04-11 11:25:18 | INFO     | Batch predictions saved \u2192 predictions/batch_scores_20260411_112517.csv (300,000 rows)
+2026-04-11 11:25:18 | INFO     | Pipeline completed successfully

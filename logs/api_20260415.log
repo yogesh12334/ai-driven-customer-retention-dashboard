@@ -1,0 +1,18 @@
+2026-04-15 21:12:31,422 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-15 21:12:31,424 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-15 22:15:32,761 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-15 22:15:32,766 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-15 22:15:46,409 | INFO     | API Lifecycle: Service is shutting down.
+2026-04-15 22:16:01,602 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-15 22:16:01,603 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-15 22:17:06,314 | INFO     | GET / -> Status: 200 (7.37ms)
+2026-04-15 22:17:06,601 | INFO     | GET /favicon.ico -> Status: 404 (0.97ms)
+2026-04-15 22:17:39,314 | INFO     | GET / -> Status: 200 (3.26ms)
+2026-04-15 22:21:25,497 | INFO     | Artifacts successfully loaded from slug: xgboost_20260411_112513
+2026-04-15 22:21:25,503 | INFO     | API Startup: Model artifacts are ready for inference.
+2026-04-15 22:21:58,599 | INFO     | GET / -> Status: 200 (13.94ms)
+2026-04-15 22:21:58,889 | INFO     | GET /favicon.ico -> Status: 404 (1.0ms)
+2026-04-15 22:23:10,861 | INFO     | GET /docs -> Status: 200 (1.74ms)
+2026-04-15 22:23:11,884 | INFO     | GET /openapi.json -> Status: 200 (260.16ms)
+2026-04-15 22:23:56,631 | INFO     | GET /health -> Status: 200 (5.7ms)
+2026-04-16 09:37:04,146 | INFO     | API Lifecycle: Service is shutting down.
