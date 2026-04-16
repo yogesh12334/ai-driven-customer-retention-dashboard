@@ -77,3 +77,26 @@ Aspiring Data & Business Analyst
 LinkedIn Profile (https://www.linkedin.com/in/yogesh-kumar-saini/)
 
 
+_________________________________________________________________________________________________________________________
+
+<img width="1903" height="669" alt="image" src="https://github.com/user-attachments/assets/801f416b-f0f0-4b05-890a-868f37568bd1" />
+
+_________________________________________________________________________________________________________________________
+
+<img width="1898" height="848" alt="image" src="https://github.com/user-attachments/assets/653b06c9-6a69-4c6f-b0b6-5a08b0696275" />
+
+_________________________________________________________________________________________________________________________
+
+<img width="1893" height="542" alt="image" src="https://github.com/user-attachments/assets/7e740ade-29c6-4314-aa8c-7333df2e54ef" />
+
+_________________________________________________________________________________________________________________________
+
+<img width="1784" height="526" alt="image" src="https://github.com/user-attachments/assets/cb176645-e0d0-462e-a18d-d0196f08907f" />
+
+_________________________________________________________________________________________________________________________
+
+<img width="1775" height="335" alt="image" src="https://github.com/user-attachments/assets/554c35df-d19b-479a-83b5-0981f2177b68" />
+
+________________________________________________________________________________________________________________________
+
+<img width="1206" height="858" alt="image" src="https://github.com/user-attachments/assets/689d4157-2bff-49ed-b075-97cb9a39752d" />
